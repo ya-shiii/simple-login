@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Checks admin authentication -->
+    <script src="js/admin_checker.js"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+</head>
+
+<body class="flex justify-center bg-gray-100">
+    <div class="w-full p-5 rounded-lg">
+        <div class="w-1/5 flex justify-center mb-3 mx-auto">
+            <button>
+                <a href="php/logout.php" class="bg-blue-400 text-white rounded-full py-2 px-4 inline-block">Logout</a>
+            </button>
+        </div>
+        <div id="usersTable" class="overflow-x-auto w-4/5 mx-auto">
+            <!-- Table will be dynamically created here -->
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
