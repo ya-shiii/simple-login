@@ -17,14 +17,20 @@
         src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     <style>
         .welcome-message {
-            position: fixed;
             color: #333;
             font-weight: bold;
+            font-size: 4rem;
             /* Adjust font size as needed */
             opacity: 0;
             /* Initially hidden */
             animation: floatUp 5s ease-in-out forwards, grow 4s ease-in-out 0.2s forwards;
             /* Animation combined */
+            text-align: center;
+            justify-items: center;
+            align-items: center;
+            /* Horizontally center the text */
+            margin-top: 25%;
+            /* Adjust vertical position */
         }
 
         @keyframes floatUp {
@@ -67,7 +73,7 @@
         <div>
 
         </div class="w-full">
-        <div id="welcomeuser" class="w-3/5 text-center items-center my-20 text-6xl">
+        <div id="welcomeuser">
             <!-- Floating welcome user here -->
         </div>
     </div>
