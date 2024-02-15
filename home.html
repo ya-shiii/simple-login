@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Checks user authentication -->
+    <script src="js/user_checker.js"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <style>
+        .welcome-message {
+            position: fixed;
+            color: #333;
+            font-weight: bold;
+            /* Adjust font size as needed */
+            opacity: 0;
+            /* Initially hidden */
+            animation: floatUp 5s ease-in-out forwards, grow 4s ease-in-out 0.2s forwards;
+            /* Animation combined */
+        }
+
+        @keyframes floatUp {
+            from {
+                top: 30%;
+                /* Start from below the viewport */
+            }
+
+            to {
+                top: 25%;
+                /* Float up to 20px above the bottom */
+            }
+        }
+
+        @keyframes grow {
+            from {
+                transform: scale(0.7);
+                /* Start with no size */
+                opacity: 0;
+                /* Start hidden */
+            }
+
+            to {
+                transform: scale(1);
+                /* Grow to full size */
+                opacity: 1;
+                /* Fully visible */
+            }
+        }
+    </style>
+</head>
+
+<body class="flex justify-center bg-gray-100">
+    <div class="w-full p-5 rounded-lg">
+        <div class="w-1/5 flex justify-center mb-3 mx-auto">
+            <button>
+                <a href="php/logout.php" class="bg-blue-400 text-white rounded-full py-2 px-4 inline-block">Logout</a>
+            </button>
+        </div>
+        <div>
+
+        </div class="w-full">
+        <div id="welcomeuser" class="w-3/5 text-center items-center my-20 text-6xl">
+            <!-- Floating welcome user here -->
+        </div>
+    </div>
+
+    <script src="js/user.js"></script>
+</body>
