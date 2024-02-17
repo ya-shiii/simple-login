@@ -31,13 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Perform the insertion into the database
         $insertQuery = "INSERT INTO users (username, `password`, full_name, email, age, gender, acc_status) 
-                VALUES ('$username', '$password', '$full_name', '$email', $age, '$gender', 'Pending')";
+                VALUES ('$username', '$password', '$full_name', '$email', $age, '$gender', 'Verified')";
 
         $insertResult = mysqli_query($conn, $insertQuery);
 
         if ($insertResult) {
             $response = array('success' => true, 'message' => 'User added successfully');
-            echo '<script>alert("Registered successfully. Please wait for admin approval"); window.location.href = "../";</script>';
+            echo '<script>alert("Registered successfully."); window.location.href = "../";</script>';
             exit;
         } else {
             $response = array('success' => false, 'message' => ': ' . mysqli_error($conn));

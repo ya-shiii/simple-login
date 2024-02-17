@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "simple-login"; // database name
+$dbname = "gform_db"; // database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

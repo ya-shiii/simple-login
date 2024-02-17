@@ -10,11 +10,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body class="bg-fixed bg-cover bg-center">
+<body class="bg-fixed bg-cover bg-center bg-gradient-to-bl from-green-100 to-lime-50">
     <div class="relative h-auto">
-        <h1 class="text-8xl font-black text-indigo-900 text-center mt-16 mb-0 stroke-white">Simple Login-Verify</h1>
+        <h1 class="text-8xl font-black text-gradient-green-300 text-center mt-16 mb-0 stroke-white">Login</h1>
         <div class="flex flex-column items-center justify-center my-24">
-            <div class="bg-blue-100 p-0 shadow-lg flex w-1/4">
+            <div class="bg-gradient-to-br from-green-200 to-green-600 p-0 shadow-lg flex w-1/4 rounded-lg">
                 <div class="w-full p-20" id="login-form">
                     <form method="post" action="php/login.php">
                         <div class="mb-4">
@@ -27,11 +27,14 @@
                             <input type="password" id="password" name="password"
                                 class="w-full border border-gray-300 py-2 px-5 rounded-full" required>
                         </div>
-                        <button type="submit"
-                            class="bg-blue-900 text-white py-2 px-4 rounded-full hover:bg-blue-600 right-0">Login</button>
+                        <div class="mb-4 w-full justify-items-end text-right">
+                            <button type="submit"
+                            class="bg-black text-white w-2/5 py-2 px-4 rounded-lg hover:bg-green-600">Login</button>
                     </form>
-                    <p class="mt-4">Don’t have an account? <span id="register-link"
-                            class="text-blue-600 cursor-pointer">Register</span></p>
+                        </div>
+                        
+                    <p class=" font-bold mt-4 text-right">Don’t have an account? <span id="register-link"
+                            class="text-gradient-blue-600 hover:text-blue-700 cursor-pointer underline">Register</span></p>
                 </div>
 
                 <!-- Register -->
@@ -68,14 +71,14 @@
                         </div>
                         <!-- Form buttons -->
                         <div class="mt-4 flex justify-end">
-                            <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                            <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-black rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300">
                                 Save Changes
                             </button>
                         </div>
                     </form>
                     
-                    <p class="mt-4">Already have an account? <span id="login-link"
-                            class="text-blue-600 cursor-pointer">Login</span></p>
+                    <p class="mt-4 font-bold">Already have an account? <span id="login-link"
+                            class="text-gradient-blue-600 underline hover:text-blue-700 cursor-pointer">Login</span></p>
                 </div>
             </div>
         </div>

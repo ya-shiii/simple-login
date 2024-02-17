@@ -17,16 +17,115 @@
         src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 </head>
 
-<body class="flex justify-center bg-gray-100">
-    <div class="w-full p-5 rounded-lg">
-        <div class="w-1/5 flex justify-center mb-3 mx-auto">
-            <button>
-                <a href="php/logout.php" class="bg-blue-400 text-white rounded-full py-2 px-4 inline-block">Logout</a>
-            </button>
+<body class="flex justify-center bg-gray-300">
+    <div class="w-full px-5 rounded-lg flex bg-gradient-to-bl from-green-100 to-lime-50">
+        <div class="w-1/4 h-screen shadow-lg bg-gray-100">
+            <div class="flex-col h-24 p-3 mt-24 items-center">
+                <div class="w-full space-y-4">
+                    <div class="w-full flex relative">
+                        <input type="text" id="searchInput"
+                            class="w-full pl-10 pr-4 py-2 rounded-lg border-2 border-gray-400 focus:outline-none focus:border-blue-400"
+                            placeholder="Search">
+                        <button id="searchButton"
+                            class="px-4 py-2 bg-blue-500 text-white rounded-lg ml-2">Search</button>
+                        </div>
+                    <p class="font-sm italic text-center">Click 'Search' when field empty to reload all questions</p>
+                </div>
+                <div class="flex w-full space-x-4 mt-28">
+                    <button class="w-10/12 mx-auto mb-8" id="openModal">
+                        <a href="#"
+                            class="w-full bg-green-800 text-white font-bold uppercase rounded-lg py-2 px-4 inline-block">New
+                            Question</a>
+                    </button>
+
+                </div>
+                <div class="flex w-full space-x-4">
+                    <button class="w-10/12 mx-auto my-5">
+                        <a href="php/logout.php"
+                            class="w-full bg-red-800 text-white font-bold uppercase rounded-lg py-2 px-4 inline-block">Logout</a>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div id="usersTable" class="overflow-x-auto w-4/5 mx-auto">
-            <!-- Table will be dynamically created here -->
+
+        <div class="w-3/4 h-screen overflow-y-auto">
+            <div id="form" class="p-5">
+                <!-- Questions here -->
+            </div>
         </div>
+
+
+        <!-- Modal Background -->
+        <div id="modalBackground" class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 hidden"></div>
+
+        <!-- Modal -->
+        <div id="modal"
+            class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-lg shadow-lg hidden">
+            <h2 class="text-2xl mb-4">New Question</h2>
+            <form id="questionForm">
+                <div class="mb-4">
+                    <label for="question" class="block text-gray-700 text-sm font-medium mb-2">Question</label>
+                    <input type="text" id="question" name="question"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="answer" class="block text-gray-700 text-sm font-medium mb-2">Answer</label>
+                    <input type="text" id="answer" name="answer"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="choices" class="block text-gray-700 text-sm font-medium mb-2">Other Choices</label>
+                    <input type="text" id="choice1" name="choice1"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md mb-2" placeholder="Option 1">
+                    <input type="text" id="choice2" name="choice2"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md mb-2" placeholder="Option 2">
+                    <input type="text" id="choice3" name="choice3"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md mb-2" placeholder="Option 3">
+                </div>
+                <button type="submit" class="bg-green-700 text-white px-4 py-2 rounded-md">Submit</button>
+                <button type="button" id="closeModal"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md">Close</button>
+            </form>
+        </div>
+
+
+        <!-- Modal Background -->
+        <div id="editModalBackground" class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 hidden"></div>
+
+        <!-- Edit Modal -->
+        <div id="editModal"
+            class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-lg shadow-lg hidden">
+            <h2 class="text-2xl mb-4">Edit Question</h2>
+            <form id="editQuestionForm">
+                <div class="mb-4">
+                    <label for="editQuestion" class="block text-gray-700 text-sm font-medium mb-2">Question</label>
+                    <input type="hidden" id="editQuestionID" name="editQuestionID"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md">
+                    <input type="text" id="editQuestion" name="editQuestion"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="editAnswer" class="block text-gray-700 text-sm font-medium mb-2">Answer</label>
+                    <input type="text" id="editAnswer" name="editAnswer"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="editChoice1" class="block text-gray-700 text-sm font-medium mb-2">Other Choices</label>
+                    <input type="text" id="editChoice1" name="editChoice1"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md mb-2" placeholder="Option 1">
+                    <input type="text" id="editChoice2" name="editChoice2"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md mb-2" placeholder="Option 2">
+                    <input type="text" id="editChoice3" name="editChoice3"
+                        class="w-full border border-gray-300 py-2 px-4 rounded-md mb-2" placeholder="Option 3">
+                </div>
+                <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded-md">Update</button>
+                <button type="button" id="deleteEditModal"
+                    class="bg-red-700 text-white px-4 py-2 rounded-md">Delete</button>
+                <button type="button" id="closeEditModal"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md">Close</button>
+            </form>
+        </div>
+
     </div>
 
     <script src="js/admin.js"></script>
